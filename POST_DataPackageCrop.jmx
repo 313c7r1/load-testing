@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="SmartDevice CP" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="id" elementType="Argument">
+            <stringProp name="Argument.name">id</stringProp>
+            <stringProp name="Argument.value">5608976905474549440</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cameraName" elementType="Argument">
+            <stringProp name="Argument.name">cameraName</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="tank" elementType="Argument">
+            <stringProp name="Argument.name">tank</stringProp>
+            <stringProp name="Argument.value">${__RandomString(5,abcdefg)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="target" elementType="Argument">
+            <stringProp name="Argument.name">target</stringProp>
+            <stringProp name="Argument.value">${__P(host,10.12.104.236)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port_user" elementType="Argument">
+            <stringProp name="Argument.name">port_user</stringProp>
+            <stringProp name="Argument.value">80</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="detectionPath" elementType="Argument">
+            <stringProp name="Argument.name">detectionPath</stringProp>
+            <stringProp name="Argument.value">/Detection/Jo.jpg</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="detectionFullPath" elementType="Argument">
+            <stringProp name="Argument.name">detectionFullPath</stringProp>
+            <stringProp name="Argument.value">/Detection/Jo.jpg</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="detectionCropPath" elementType="Argument">
+            <stringProp name="Argument.name">detectionCropPath</stringProp>
+            <stringProp name="Argument.value">C:\performance\Jmeter\Detection\JoCrop.jpg</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="true">
+        <collectionProp name="prometheus.collector_definitions">
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_success_total</stringProp>
+            <stringProp name="collector.type">COUNTER</stringProp>
+            <collectionProp name="collector.labels">
+              <stringProp name="102727412">label</stringProp>
+              <stringProp name="3552490">tank</stringProp>
+              <stringProp name="-880905839">target</stringProp>
+            </collectionProp>
+            <stringProp name="collector.quantiles_or_buckets">100,500,1000,3000</stringProp>
+            <stringProp name="listener.collector.measuring">SuccessTotal</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_failure_total</stringProp>
+            <stringProp name="collector.type">COUNTER</stringProp>
+            <collectionProp name="collector.labels">
+              <stringProp name="102727412">label</stringProp>
+              <stringProp name="3552490">tank</stringProp>
+              <stringProp name="-880905839">target</stringProp>
+            </collectionProp>
+            <stringProp name="collector.quantiles_or_buckets">100,500,1000,3000</stringProp>
+            <stringProp name="listener.collector.measuring">FailureTotal</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_count_total</stringProp>
+            <stringProp name="collector.type">COUNTER</stringProp>
+            <collectionProp name="collector.labels">
+              <stringProp name="102727412">label</stringProp>
+              <stringProp name="3552490">tank</stringProp>
+              <stringProp name="3059181">code</stringProp>
+              <stringProp name="-880905839">target</stringProp>
+            </collectionProp>
+            <stringProp name="collector.quantiles_or_buckets"></stringProp>
+            <stringProp name="listener.collector.measuring">CountTotal</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_can_fail</stringProp>
+            <stringProp name="collector.type">SUCCESS_RATIO</stringProp>
+            <collectionProp name="collector.labels"/>
+            <stringProp name="collector.quantiles_or_buckets"></stringProp>
+            <stringProp name="listener.collector.measuring">SuccessRatio</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_rt_as_hist</stringProp>
+            <stringProp name="collector.type">HISTOGRAM</stringProp>
+            <collectionProp name="collector.labels">
+              <stringProp name="102727412">label</stringProp>
+              <stringProp name="3552490">tank</stringProp>
+              <stringProp name="-880905839">target</stringProp>
+            </collectionProp>
+            <stringProp name="collector.quantiles_or_buckets">100,500,1000,3000</stringProp>
+            <stringProp name="listener.collector.measuring">ResponseTime</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_rt_as_summary</stringProp>
+            <stringProp name="collector.type">SUMMARY</stringProp>
+            <collectionProp name="collector.labels">
+              <stringProp name="50511102">category</stringProp>
+              <stringProp name="102727412">label</stringProp>
+              <stringProp name="3059181">code</stringProp>
+              <stringProp name="3552490">tank</stringProp>
+              <stringProp name="-880905839">target</stringProp>
+            </collectionProp>
+            <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
+            <stringProp name="listener.collector.listen_to">samples</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+            <stringProp name="collector.help">default help string</stringProp>
+            <stringProp name="collector.metric_name">jmeter_rsize_as_hist</stringProp>
+            <stringProp name="collector.type">HISTOGRAM</stringProp>
+            <collectionProp name="collector.labels">
+              <stringProp name="3552490">tank</stringProp>
+              <stringProp name="-880905839">target</stringProp>
+            </collectionProp>
+            <stringProp name="collector.quantiles_or_buckets">100,500,1000,3000</stringProp>
+            <stringProp name="listener.collector.measuring">ResponseSize</stringProp>
+          </elementProp>
+        </collectionProp>
+      </com.github.johrstrom.listener.PrometheusListener>
+      <hashTree/>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+        <stringProp name="CounterConfig.start">1</stringProp>
+        <stringProp name="CounterConfig.end">${__P(maxCountCameras,2)}</stringProp>
+        <stringProp name="CounterConfig.incr">1</stringProp>
+        <stringProp name="CounterConfig.name">camera_count</stringProp>
+        <stringProp name="CounterConfig.format"></stringProp>
+        <boolProp name="CounterConfig.per_user">false</boolProp>
+      </CounterConfig>
+      <hashTree/>
+      <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+        <stringProp name="maximumValue">${__P(maxCountCameras,2)}</stringProp>
+        <stringProp name="minimumValue">1</stringProp>
+        <stringProp name="outputFormat"></stringProp>
+        <boolProp name="perThread">true</boolProp>
+        <stringProp name="randomSeed">1</stringProp>
+        <stringProp name="variableName">camera_name</stringProp>
+      </RandomVariableConfig>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">1</stringProp>
+        <stringProp name="ThreadGroup.delay">1</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Token Sysadmin" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="grant_type" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">password</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">grant_type</stringProp>
+              </elementProp>
+              <elementProp name="username" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">sysadmin</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">username</stringProp>
+              </elementProp>
+              <elementProp name="password" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">sysadmin</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">password</stringProp>
+              </elementProp>
+              <elementProp name="client_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">test</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">client_id</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,10.12.104.236)}</stringProp>
+          <stringProp name="HTTPSampler.port">${port_user}</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/users-service/connect/token#create_token</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">token</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..access_token</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+JMeterUtils.setProperty(&quot;token&quot;, vars.get(&quot;token&quot;));</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+            <stringProp name="ConstantTimer.delay">100000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Token admin" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="grant_type" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">password</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">grant_type</stringProp>
+              </elementProp>
+              <elementProp name="username" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">admin</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">username</stringProp>
+              </elementProp>
+              <elementProp name="password" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">admin</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">password</stringProp>
+              </elementProp>
+              <elementProp name="client_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">test</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">client_id</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,10.12.104.236)}</stringProp>
+          <stringProp name="HTTPSampler.port">${port_user}</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/users-service/connect/token#create_token</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">tokenAdmin</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..access_token</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+JMeterUtils.setProperty(&quot;tokenAdmin&quot;, vars.get(&quot;tokenAdmin&quot;));</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+            <stringProp name="ConstantTimer.delay">100000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SmartDevices" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(maxCountCameras,5)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time"></stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PostSmartDevice" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;type&quot;: &quot;Telpo&quot;,&#xd;
+  &quot;systemName&quot;: &quot;${camera_count}&quot;,&#xd;
+  &quot;displayName&quot;: &quot;${camera_count}&quot;,&#xd;
+  &quot;description&quot;: &quot;${camera_count}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,10.12.104.236)}</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/camera-service/api/v2/SmartDevices</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${__property(token)}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="bzm - Concurrency Thread Group" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController"/>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="TargetLevel">${__P(targetCountThread,1)}</stringProp>
+        <stringProp name="RampUp">${__P(testTime,10)}</stringProp>
+        <stringProp name="Steps">${__P(stepCount,1)}</stringProp>
+        <stringProp name="Hold">${__P(holdTime,1)}</stringProp>
+        <stringProp name="LogFilename"></stringProp>
+        <stringProp name="Iterations"></stringProp>
+        <stringProp name="Unit">M</stringProp>
+      </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DataPackageCrop" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;DeviceId&quot;: &quot;${camera_count}&quot;,&#xd;
+  &quot;Timestamp&quot;: &quot;${__time(yyyy/MM/dd HH:mm:ss.SSS)}&quot;,&#xd;
+  &quot;TrackId&quot;: &quot;${__UUID}&quot;,&#xd;
+  &quot;Crop&quot;: {&#xd;
+    &quot;Data&quot;: &quot;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&quot;,&#xd;
+    &quot;Format&quot;: &quot;Jpeg&quot;,&#xd;
+    &quot;Url&quot;: &quot;http://localhost:8080/shared_storage${detectionPath}&quot;&#xd;
+  },&#xd;
+  &quot;PortraitCharacteristics&quot;: {&#xd;
+    &quot;Temperature&quot;: 36.6,&#xd;
+    &quot;Liveness&quot;: &quot;Undefined&quot;,&#xd;
+    &quot;Mask&quot;: &quot;Undefined&quot;,&#xd;
+    &quot;Age&quot;: 0,&#xd;
+    &quot;Gender&quot;: &quot;Undefined&quot;&#xd;
+  },&#xd;
+  &#xd;
+  &quot;Model&quot;: {&#xd;
+    &quot;Data&quot;: &quot;CA8SCwgBGQAAAECLpQpAGgZWRk5fQk0ijQQKigQIgAIQARgDIoAEGfvdAcT8SQmG/vsDWAKE/H8Kau8aBMr2vAEu+a0JAP2aAEj1QPfUA3kII/iF+0oCZ/YJ7jj9ufehCuz47QnIBBgB+ACi+/v6aAqR9bn22+48/IH8UvxF80X4GQBbAscNJgpb99AEdhThBHYFRvKB/MwB8AaV+5XypwLC/Af6PPv49fr4nv58/ooBz/qa60H+tPjzA6D/ovZIBD33m/NH7qwFFQ0kAFADuvSy+P0E8/tB9r4EOwO0/UwGRvQNAnn2EQB1AGH0fwCR+vIAB/ZOCtICFQdXAJYCrQUfD/r/lw0sBToBv/ZiCCj3cwYOAu0BCg1uBIoAxfMs/7QDiADt/tgJ2fVw+l79iQDACdYEsAo7+xQGeQZ78XYIFvrzDDj8egD1/MEKH/0O/eoGdA1oC3MBogJ4BTL+nwnF+QYJigP28QkDqwFa/swNIgA7DTwFlgFgD2j3+f4jArz9vwd+B2wHKv0kAw0K8Ple/ib8sApq9ZMMhAYy/6j3//jmAkT5DvTE8ST3AA1N9+sUVgHy9bQELvvp+Sf1z/Kc8YkQqARa/F32pvj3++0DBPLv/cH6zAD2EPL4Ewzj9fLxcAe1/UYBJPZrAW0FUAOMAwQGD/36/jP9nwSd9Z8D/AUSB8n3LwTS9f77NAWZ+wf1lANtAsr0vQLRArjxLvid9sQDKgU=&quot;,&#xd;
+    &quot;Version&quot;: &quot;STC Face SDK.VFN_BM.15&quot;,&#xd;
+    &quot;Quality&quot;: 0.6764681935310364&#xd;
+  },&#xd;
+  &quot;Matches&quot;: {&#xd;
+    &quot;Candidates&quot;: []&#xd;
+  },&#xd;
+  &quot;DetectedFaceInfo&quot;: {&#xd;
+    &quot;FaceArea&quot;: {&#xd;
+      &quot;X&quot;: 610,&#xd;
+      &quot;Y&quot;: 193,&#xd;
+      &quot;Width&quot;: 221,&#xd;
+      &quot;Height&quot;: 317&#xd;
+    },&#xd;
+    &quot;YawAngle&quot;: 0,&#xd;
+    &quot;RollAngle&quot;: 0,&#xd;
+    &quot;PitchAngle&quot;: 0&#xd;
+  },&#xd;
+  &quot;Metadata&quot;: []&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,10.12.104.236)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/rts-api-service/api/v1/SmartDevices/DataPackage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${__property(token)}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="throughput">${__P(constantTimer,120)}</stringProp>
+          <intProp name="calcMode">0</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+      </hashTree>
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <longProp name="interval_grouping">1000</longProp>
+        <boolProp name="graph_aggregated">false</boolProp>
+        <stringProp name="include_sample_labels"></stringProp>
+        <stringProp name="exclude_sample_labels"></stringProp>
+        <stringProp name="start_offset"></stringProp>
+        <stringProp name="end_offset"></stringProp>
+        <boolProp name="include_checkbox_state">false</boolProp>
+        <boolProp name="exclude_checkbox_state">false</boolProp>
+      </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <kg.apc.jmeter.reporters.AutoStop guiclass="kg.apc.jmeter.reporters.AutoStopGui" testclass="kg.apc.jmeter.reporters.AutoStop" testname="jp@gc - AutoStop Listener" enabled="true">
+        <stringProp name="avg_response_time">10000</stringProp>
+        <stringProp name="avg_response_time_length">10</stringProp>
+        <stringProp name="error_rate">10</stringProp>
+        <stringProp name="error_rate_length">10</stringProp>
+        <stringProp name="avg_response_latency">5000</stringProp>
+        <stringProp name="avg_response_latency_length">10</stringProp>
+      </kg.apc.jmeter.reporters.AutoStop>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
